@@ -1,3 +1,4 @@
+import 'dotenv/config';
 const cors = require('cors');
 const express = require('express');
 
@@ -21,7 +22,6 @@ db.sequelize.sync();
 require('./src/routes/project')(app);
 
 const PORT = process.env.PORT || 8080;
-
 if (!process.env.DETA_RUNTIME) {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
