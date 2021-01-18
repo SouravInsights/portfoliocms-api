@@ -1,4 +1,4 @@
-import 'dotenv/config';
+const dotenv = require('dotenv/config');
 const cors = require('cors');
 const express = require('express');
 
@@ -16,7 +16,6 @@ app.get('/', (req, res) => {
 });
 
 const db = require('./src/models');
-db.sequelize.sync();
 
 // Routes
 require('./src/routes/project')(app);
