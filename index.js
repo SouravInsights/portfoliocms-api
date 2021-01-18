@@ -1,6 +1,5 @@
-import 'dotenv/config';
-import cors from 'cors';
-import express from 'express';
+const cors = require('cors');
+const express = require('express');
 
 const app = express();
 
@@ -15,13 +14,18 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to PortfolioCMS application.' });
 });
 
-const db = require('./models');
+const db = require('./src/models');
 db.sequelize.sync();
 
 // Routes
-require('./routes/project')(app);
+require('./src/routes/project')(app);
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+
+if (!process.env.DETA_RUNTIME) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+  });
+}
+
+module.exports = app;

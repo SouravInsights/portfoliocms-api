@@ -1,8 +1,9 @@
 module.exports = {
-  HOST: 'localhost',
-  USER: 'me',
-  PASSWORD: 'souravinsights',
-  DB: 'portfoliocms',
+  HOST: process.env.HOST,
+  USER: process.env.USER,
+  PASSWORD: process.env.PASSWORD,
+  DB: process.env.DB,
+  URI: process.env.URI,
   dialect: 'postgres',
   pool: {
     max: 5,
